@@ -1,0 +1,271 @@
+/* ═══════════════════════════════════════════════════════
+   Art of Dum Styles — Symmetrical Cards & Parallax Steam
+   ═══════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  background: var(--clr-bg-primary);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-4xl);
+  z-index: 2;
+  position: relative;
+}
+
+.subtitle {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  max-width: 500px;
+}
+
+/* ── Background Parallax Steam/Aroma ── */
+.steamContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.steamCloud {
+  position: absolute;
+  background: radial-gradient(
+    circle,
+    rgba(212, 168, 85, 0.04) 0%,
+    rgba(212, 168, 85, 0.01) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.steam1 {
+  width: 400px;
+  height: 400px;
+  top: 15%;
+  left: -100px;
+}
+
+.steam2 {
+  width: 500px;
+  height: 500px;
+  top: 45%;
+  right: -150px;
+}
+
+.steam3 {
+  width: 350px;
+  height: 350px;
+  bottom: 10%;
+  left: 20%;
+}
+
+/* ── Timeline ── */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin-inline: auto;
+  z-index: 2;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--clr-accent-primary),
+    var(--clr-accent-primary),
+    transparent
+  );
+  opacity: 0.2;
+  transform: translateX(-50%);
+}
+
+/* ── Step Layout ── */
+.step {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.step .card {
+  grid-column: 1;
+}
+
+.step .node {
+  grid-column: 2;
+}
+
+.step .placeholderColumn {
+  grid-column: 3;
+}
+
+/* Reverse Step Alignment */
+.stepReverse .card {
+  grid-column: 3;
+}
+
+.stepReverse .node {
+  grid-column: 2;
+}
+
+.stepReverse .placeholderColumn {
+  grid-column: 1;
+}
+
+/* ── Node ── */
+.node {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--clr-bg-primary);
+  border: 2px solid var(--clr-accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: var(--shadow-glow);
+}
+
+.nodeNumber {
+  font-family: var(--font-heading);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--clr-accent-primary);
+}
+
+/* ── Timeline Card ── */
+.card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: default;
+  transition: var(--transition-base);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: var(--clr-accent-primary);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Image inside Card */
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card Content Details */
+.cardContent {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.iconWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(212, 168, 85, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardIcon {
+  color: var(--clr-accent-primary);
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text-primary);
+}
+
+.cardDescription {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: var(--space-2xl);
+  }
+
+  .timelineLine {
+    left: 24px;
+  }
+
+  .step,
+  .stepReverse {
+    grid-template-columns: auto 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .step .node,
+  .stepReverse .node {
+    grid-column: 1;
+    order: 0;
+  }
+
+  .step .card,
+  .stepReverse .card {
+    grid-column: 2;
+    order: 1;
+  }
+
+  .step .placeholderColumn,
+  .stepReverse .placeholderColumn {
+    display: none;
+  }
+
+  .node {
+    width: 40px;
+    height: 40px;
+  }
+}

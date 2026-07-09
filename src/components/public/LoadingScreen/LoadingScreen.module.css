@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════════════════
+   Loading Screen Styles
+   ═══════════════════════════════════════════════════════ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  background: var(--clr-bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+}
+
+/* ── Steam ── */
+.steamContainer {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+/* Warm glow aura behind the steam */
+.steamContainer::before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 168, 85, 0.18) 0%,
+    rgba(212, 168, 85, 0.06) 45%,
+    transparent 75%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+
+.steam {
+  width: 10px;
+  height: 50px;
+  background: linear-gradient(
+    to top,
+    rgba(212, 168, 85, 0.1),
+    rgba(255, 255, 255, 0.4),
+    rgba(212, 168, 85, 0.12)
+  );
+  border-radius: 50%;
+  filter: blur(2.5px);
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  z-index: 1;
+}
+
+.logoIcon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 20px rgba(212, 168, 85, 0.4));
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text-primary);
+  letter-spacing: var(--ls-tight);
+  text-align: center;
+}
+
+.logoAccent {
+  color: var(--clr-accent-primary);
+}
+
+/* ── Tagline ── */
+.tagline {
+  display: flex;
+  z-index: 1;
+}
+
+.letter {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  letter-spacing: var(--ls-wide);
+}
+
+/* ── Progress ── */
+.progressTrack {
+  width: 200px;
+  height: 2px;
+  background: var(--clr-bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .logoIcon {
+    font-size: 2.5rem;
+  }
+
+  .logoText {
+    font-size: var(--fs-xl);
+  }
+
+  .letter {
+    font-size: var(--fs-sm);
+  }
+}

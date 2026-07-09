@@ -1,66 +1,57 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState, useCallback } from 'react';
+import { LoadingScreen } from '@/components/public/LoadingScreen';
+import { Navbar } from '@/components/public/Navbar';
+import { Hero } from '@/components/public/Hero';
+import { BrandStory } from '@/components/public/BrandStory';
+import { ArtOfDum } from '@/components/public/ArtOfDum';
+import { Ingredients } from '@/components/public/Ingredients';
+import { VegNonVeg } from '@/components/public/VegNonVeg';
+import { FeaturedMenu } from '@/components/public/FeaturedMenu';
+import { ChefSpecial } from '@/components/public/ChefSpecial';
+import { Testimonials } from '@/components/public/Testimonials';
+import { Reservation } from '@/components/public/Reservation';
+import { Contact } from '@/components/public/Contact';
+import { Footer } from '@/components/public/Footer';
+import Cart from '@/components/public/Cart';
+
+/* ═══════════════════════════════════════════════════════
+   Home Page — One continuous cinematic journey
+   
+   Loading Screen → Hero → Brand Story → Art of Dum →
+   Ingredients → Veg/NonVeg → Menu → Chef Special →
+   Testimonials → Reservation → Contact → Footer
+   ═══════════════════════════════════════════════════════ */
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+
+      <div style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
+        <Navbar />
+        <Cart />
+        <main id="main-content">
+          <Hero />
+          <BrandStory />
+          <ArtOfDum />
+          <Ingredients />
+          <VegNonVeg />
+          <FeaturedMenu />
+          <ChefSpecial />
+          <Testimonials />
+          <Reservation />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }

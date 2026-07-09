@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════════════════
+   Hero Section Styles — Full-screen realistic background
+   ═══════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+/* ── Full Size Background Image Wrapper ── */
+.heroBgImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroBgImage {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.85) contrast(1.05) saturate(1.15); /* Significantly brighter and more appetizing */
+  transform-origin: center center;
+  will-change: transform;
+  animation: zoomOnly 22s ease-in-out infinite alternate;
+}
+
+@keyframes zoomOnly {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* Very soft overlay that keeps the left text readable but keeps the right side biryani fully vivid and tasty */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.4) 35%, rgba(10, 10, 10, 0.1) 60%, transparent 100%),
+              linear-gradient(to bottom, transparent 65%, #0a0a0a 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Container ── */
+.container {
+  max-width: var(--container-wide);
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Content ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 620px;
+  z-index: 1;
+}
+
+.tagline {
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  color: var(--clr-accent-primary);
+  letter-spacing: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: var(--fs-5xl);
+  font-weight: var(--fw-extrabold);
+  line-height: 1.05;
+  color: var(--clr-text-primary);
+  letter-spacing: var(--ls-tight);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  margin-bottom: var(--space-xs);
+}
+
+.headlineAccent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none; /* remove shadow for clean gradient text */
+}
+
+.description {
+  font-size: var(--fs-md);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: var(--lh-relaxed);
+  max-width: 500px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-top: var(--space-xs);
+}
+
+/* ── Stats ── */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-xl);
+  width: fit-content;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--clr-accent-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.statLabel {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-tertiary);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Scroll Indicator ── */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--clr-text-tertiary);
+  text-decoration: none;
+  transition: var(--transition-colors);
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scrollIndicator:hover {
+  color: var(--clr-accent-primary);
+}
+
+.scrollText {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+}
+
+.scrollArrow {
+  animation: floatArrow 2s ease-in-out infinite;
+}
+
+@keyframes floatArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .content {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .description {
+    max-width: 580px;
+  }
+
+  .ctas {
+    justify-content: center;
+  }
+
+  .stats {
+    justify-content: center;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 70px;
+  }
+
+  .headline {
+    font-size: var(--fs-4xl);
+  }
+
+  .stats {
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}

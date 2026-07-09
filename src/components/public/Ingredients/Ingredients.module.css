@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════
+   Ingredients Styles — Background Image Cards
+   ═══════════════════════════════════════════════════════ */
+
+.section {
+  background: var(--gradient-section);
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-3xl);
+}
+
+.subtitle {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  max-width: 480px;
+}
+
+/* ── Spice Banner ── */
+.spiceImageWrapper {
+  margin-bottom: var(--space-3xl);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+}
+
+.spiceImage {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.spiceImageWrapper:hover .spiceImage {
+  transform: scale(1.03);
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+/* ── Card with Background Image ── */
+.card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: default;
+  transition: var(--transition-base);
+  border: 1px solid var(--clr-border);
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card:hover {
+  border-color: var(--clr-accent-primary);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(212, 168, 85, 0.08);
+}
+
+/* Background image layer */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cardBgImage {
+  object-fit: cover;
+  opacity: 0.7;
+  transition: opacity var(--duration-normal) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.card:hover .cardBgImage {
+  opacity: 0.9;
+  transform: scale(1.08);
+}
+
+/* Dark gradient overlay for readability */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+.card:hover .cardOverlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Warm accent glow on hover */
+.cardGlow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(212, 168, 85, 0.12) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+  pointer-events: none;
+}
+
+.card:hover .cardGlow {
+  opacity: 1;
+}
+
+/* Content layer */
+.cardContent {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--lh-relaxed);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  .card {
+    min-height: 200px;
+  }
+
+  .spiceImage {
+    height: 180px;
+  }
+}

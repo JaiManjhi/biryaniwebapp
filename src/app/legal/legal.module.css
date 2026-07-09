@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════════════
+   Legal Page Styles — Privacy · Terms · Refund
+   
+   Dark cinematic aesthetic matching the DUM. brand:
+   gold accents, elegant typography, glass panels.
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Hero Banner ─── */
+.hero {
+  position: relative;
+  padding: calc(var(--section-padding) + 60px) 0 var(--space-3xl);
+  text-align: center;
+  overflow: hidden;
+  background: var(--clr-bg-primary);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(212, 168, 85, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(192, 57, 43, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--clr-accent-primary) 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+.heroIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--space-md);
+  animation: float 4s ease-in-out infinite;
+}
+
+.heroLabel {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--clr-accent-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.heroTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.heroSubtitle {
+  font-size: var(--fs-md);
+  color: var(--clr-text-secondary);
+  max-width: 600px;
+  margin-inline: auto;
+  line-height: var(--lh-relaxed);
+}
+
+.lastUpdated {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--clr-accent-subtle);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  color: var(--clr-accent-primary);
+}
+
+/* ─── Content Area ─── */
+.content {
+  position: relative;
+  padding: var(--section-padding) 0;
+  background: var(--gradient-section);
+}
+
+.wrapper {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* ─── Table of Contents ─── */
+.toc {
+  margin-bottom: var(--space-3xl);
+  padding: var(--space-xl);
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+}
+
+.toc:hover {
+  border-color: var(--clr-border-hover);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tocTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--clr-divider);
+}
+
+.tocList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  counter-reset: toc-counter;
+}
+
+.tocItem {
+  counter-increment: toc-counter;
+}
+
+.tocLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-tertiary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.tocLink::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-accent-primary);
+  min-width: 1.5em;
+}
+
+.tocLink:hover {
+  background: var(--clr-accent-subtle);
+  color: var(--clr-text-primary);
+}
+
+/* ─── Section ─── */
+.section {
+  margin-bottom: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  border-bottom: 1px solid var(--clr-divider);
+}
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sectionNumber {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--clr-accent-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text-primary);
+  line-height: var(--lh-snug);
+  margin-bottom: var(--space-lg);
+}
+
+.sectionText {
+  font-size: var(--fs-base);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-md);
+}
+
+.sectionText:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Lists ─── */
+.list {
+  padding-left: var(--space-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.listItem {
+  font-size: var(--fs-base);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+.listItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-accent-primary);
+}
+
+/* ─── Highlight Box ─── */
+.highlight {
+  padding: var(--space-lg);
+  background: var(--clr-accent-subtle);
+  border-left: 3px solid var(--clr-accent-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: var(--space-md);
+}
+
+.highlight p {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+.highlight strong {
+  color: var(--clr-accent-primary);
+}
+
+/* ─── Contact Banner ─── */
+.contactBanner {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-3xl);
+}
+
+.contactBanner h3 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.contactBanner p {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-tertiary);
+  margin-bottom: var(--space-lg);
+}
+
+.contactEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--gradient-primary);
+  color: var(--clr-text-inverse);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.contactEmail:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ─── Back Link ─── */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-sm);
+  color: var(--clr-accent-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+  margin-bottom: var(--space-xl);
+}
+
+.backLink:hover {
+  color: var(--clr-accent-hover);
+  gap: var(--space-sm);
+}
+
+/* ─── Navigation between legal pages ─── */
+.legalNav {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.legalNavLink {
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-tertiary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.legalNavLink:hover {
+  border-color: var(--clr-accent-primary);
+  color: var(--clr-accent-primary);
+  background: var(--clr-accent-subtle);
+}
+
+.legalNavLinkActive {
+  border-color: var(--clr-accent-primary);
+  color: var(--clr-accent-primary);
+  background: var(--clr-accent-subtle);
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: var(--fs-2xl);
+  }
+
+  .toc {
+    padding: var(--space-lg);
+  }
+
+  .section {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .contactBanner {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .legalNav {
+    flex-direction: column;
+    align-items: center;
+  }
+}

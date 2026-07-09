@@ -1,0 +1,41 @@
+/* ═══════════════════════════════════════════════════════
+   Admin Layout Styles
+   ═══════════════════════════════════════════════════════ */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--clr-bg-primary);
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-xl);
+  margin-left: 260px;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.loadingScreen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  background: var(--clr-bg-primary);
+  color: var(--clr-text-tertiary);
+}
+
+.loadingIcon {
+  font-size: 3rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    margin-left: 0;
+    padding: var(--space-lg);
+    padding-top: calc(60px + var(--space-lg));
+  }
+}

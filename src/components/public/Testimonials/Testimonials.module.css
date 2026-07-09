@@ -1,0 +1,28 @@
+/* ═══════════════════════════════════════════════════════
+   Testimonials Styles
+   ═══════════════════════════════════════════════════════ */
+.section { background: var(--gradient-section); }
+.header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-md); margin-bottom: var(--space-3xl); }
+
+.carousel { display: flex; align-items: center; gap: var(--space-xl); max-width: 700px; margin-inline: auto; min-height: 300px; }
+
+.navBtn { width: 44px; height: 44px; border-radius: 50%; background: var(--clr-bg-card); border: 1px solid var(--clr-border); display: flex; align-items: center; justify-content: center; color: var(--clr-text-secondary); cursor: pointer; transition: var(--transition-base); flex-shrink: 0; }
+.navBtn:hover { border-color: var(--clr-accent-primary); color: var(--clr-accent-primary); background: var(--clr-accent-subtle); }
+
+.card { flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); padding: var(--space-2xl); background: var(--clr-bg-card); border: 1px solid var(--clr-border); border-radius: var(--radius-2xl); }
+
+.avatar { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); }
+.avatarInitials { font-size: 1.25rem; font-weight: var(--fw-bold); color: #ffffff; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); font-family: var(--font-heading); }
+
+.stars { display: flex; gap: 3px; }
+.starFilled { color: #f1c40f; fill: #f1c40f; }
+.starEmpty { color: var(--clr-text-muted); }
+
+.review { font-size: var(--fs-md); color: var(--clr-text-secondary); line-height: var(--lh-relaxed); font-style: italic; max-width: 500px; }
+.name { font-family: var(--font-heading); font-size: var(--fs-base); font-weight: var(--fw-semibold); color: var(--clr-accent-primary); font-style: normal; }
+
+.dots { display: flex; justify-content: center; gap: var(--space-xs); margin-top: var(--space-xl); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--clr-bg-elevated); border: 1px solid var(--clr-border); cursor: pointer; transition: var(--transition-base); padding: 0; }
+.dotActive { background: var(--clr-accent-primary); border-color: var(--clr-accent-primary); width: 28px; border-radius: var(--radius-full); }
+
+@media (max-width: 768px) { .navBtn { display: none; } .card { padding: var(--space-xl); } }
